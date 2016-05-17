@@ -1,10 +1,9 @@
-FROM analogic/trusty
+FROM ubuntu:xenial
 MAINTAINER sh@analogic.cz
 
-RUN echo "deb http://ppa.launchpad.net/ondrej/php/ubuntu trusty main" | tee -a /etc/apt/sources.list && \
-    echo "deb-src http://ppa.launchpad.net/ondrej/php/ubuntu trusty main" | tee -a /etc/apt/sources.list && \
-    gpg --keyserver pool.sks-keyservers.net --recv E5267A6C && \
-    gpg --export --armor E5267A6C | apt-key add -
+ADD https://github.com/just-containers/s6-overlay/releases/download/v1.11.0.1/s6-overlay-amd64.tar.gz /tmp/
+RUN tar xzf /tmp/s6-overlay-amd64.tar.gz -C /
+ENTRYPOINT ["/init"]
 
 RUN apt-get update && \
     apt-get upgrade -y && \
