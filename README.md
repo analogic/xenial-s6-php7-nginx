@@ -1,3 +1,3 @@
-Base image Analogic/Trusty with NGiNX, PHP 7
-============================================
+Base image Ubuntu:Xenial + S6 with NGiNX, PHP 7
+===============================================
 see Dockerfile and rootfs directory...
